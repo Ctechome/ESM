@@ -1,100 +1,479 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es-MX">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Examen Extraordinario | Estructura Socioeconómica de México</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Estructura Socioeconómica de México · Guía de Examen</title>
 <style>
-:root{
-  --azul:#001E7C; --azul2:#0B2AA0; --azulSuave:#EEF3FF; --dorado:#B08A00; --texto:#111827; --gris:#6B7280; --linea:#E5E7EB; --ok:#0E7A3A; --bad:#B42318; --fondo:#F7F9FF;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--fondo);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--texto)}
-.app{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;box-shadow:0 0 40px rgba(0,30,124,.12)}
-.header{position:sticky;top:0;z-index:30;background:linear-gradient(135deg,#fff 0%,#f6f8ff 65%,#edf2ff 100%);border-bottom:1px solid var(--linea);padding:12px 16px 10px}
-.brand{display:flex;gap:12px;align-items:center}
-.brand img{width:118px;height:auto}
-.brand h1{font-size:15px;line-height:1.1;margin:0;color:var(--azul);font-weight:900}
-.brand p{margin:3px 0 0;font-size:12px;color:var(--gris)}
-.progressWrap{margin-top:12px}
-.progressInfo{display:flex;justify-content:space-between;font-size:12px;color:var(--gris);margin-bottom:6px}
-.bar{height:9px;background:#e8ecff;border-radius:999px;overflow:hidden}
-.fill{height:100%;width:0;background:linear-gradient(90deg,var(--azul),#3357E8);border-radius:999px;transition:.25s}
-.tabs{display:flex;gap:7px;overflow-x:auto;padding:12px 16px;background:#fff;border-bottom:1px solid var(--linea)}
-.tab{border:1px solid #dbe2ff;color:var(--azul);background:#fff;border-radius:999px;padding:8px 11px;font-weight:800;white-space:nowrap}
-.tab.active{background:var(--azul);color:#fff}
-main{padding:16px 14px 90px}
-.panel{display:none}
-.panel.active{display:block}
-.sectionTitle{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin:4px 0 12px}
-.sectionTitle h2{font-size:19px;line-height:1.15;margin:0;color:var(--azul)}
-.badge{background:#FFF7D6;color:#6d5200;border:1px solid #F2D46B;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}
-.card{border:1px solid var(--linea);border-radius:18px;padding:14px;margin:12px 0;background:#fff;box-shadow:0 8px 22px rgba(17,24,39,.06)}
-.qhead{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.num{width:28px;height:28px;border-radius:50%;background:var(--azulSuave);color:var(--azul);display:grid;place-items:center;font-weight:900;font-size:13px;flex:0 0 auto}
-.qtext{font-size:15px;line-height:1.38;font-weight:650}
-.input{width:100%;border:1px solid #cfd7f5;border-radius:14px;padding:12px 13px;font-size:16px;margin-top:10px;outline:none}
-.input:focus{border-color:var(--azul);box-shadow:0 0 0 4px rgba(0,30,124,.08)}
-.actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.btn{border:0;border-radius:13px;padding:10px 12px;font-weight:900;background:var(--azul);color:#fff;cursor:pointer}
-.btn.secondary{background:#eef2ff;color:var(--azul)}
-.btn.ghost{background:#fff;border:1px solid #dbe2ff;color:var(--azul)}
-.feedback{display:none;margin-top:10px;padding:10px;border-radius:14px;font-size:14px;line-height:1.35}
-.feedback.ok{display:block;background:#ECFDF3;color:var(--ok);border:1px solid #ABEFC6}
-.feedback.bad{display:block;background:#FEF3F2;color:var(--bad);border:1px solid #FECDCA}
-.answer{display:none;margin-top:9px;padding:10px;background:#F8FAFC;border-left:4px solid var(--azul);border-radius:10px;font-size:14px;line-height:1.35}
-.answer.show{display:block}
-.model{font-weight:950;color:var(--azul);font-size:16px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.02em}
-.option{border:1px solid #dbe2ff;border-radius:14px;padding:11px 12px;margin:8px 0;background:#fbfcff;line-height:1.35;font-size:14px;cursor:pointer}
-.option.selected.good{border-color:#12B76A;background:#ECFDF3;color:#05603A}
-.option.selected.wrong{border-color:#F04438;background:#FEF3F2;color:#912018}
-.note{font-size:12px;color:#6B7280;margin-top:8px}
-.cycleBox{background:linear-gradient(180deg,#f8faff,#fff);border:1px dashed #bdc9ff;border-radius:18px;padding:16px;margin-top:12px}
-.wave{height:85px;position:relative;margin:8px 0 14px}
-.wave svg{width:100%;height:100%}
-.labels{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;text-align:center;font-size:11px;color:var(--azul);font-weight:900}
-.footerbar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;max-width:520px;width:100%;background:#fff;border-top:1px solid var(--linea);padding:10px 14px;display:flex;gap:10px;z-index:40}
-.footerbar button{flex:1}
-.small{font-size:12px;color:var(--gris);line-height:1.35}
-.pill{display:inline-block;background:var(--azulSuave);color:var(--azul);border-radius:999px;padding:5px 8px;font-size:12px;font-weight:900;margin-top:4px}
-@media print{.header,.tabs,.footerbar,.actions{display:none}.app{box-shadow:none;max-width:none}main{padding:0}.panel{display:block!important;page-break-after:always}}
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --navy:#14244a;
+    --navy-deep:#0c1730;
+    --gold:#b08d28;
+    --gold-light:#d4b657;
+    --cream:#f7f3ea;
+    --cream-2:#efe8d8;
+    --ink:#20242e;
+    --muted:#6b7280;
+    --ok:#3a7d5c;
+    --line:#e3ddca;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    padding-bottom:90px;
+  }
+
+  /* ---------- Header ---------- */
+  header.top{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(160deg,var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:14px 16px 16px;
+    box-shadow:0 4px 18px rgba(12,23,48,.35);
+  }
+  .brand-row{display:flex; align-items:center; gap:12px;}
+  .logo-chip{
+    background:#fff; border-radius:12px; padding:6px 8px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+    flex-shrink:0;
+  }
+  .logo-chip img{height:28px; display:block;}
+  .brand-text{line-height:1.15;}
+  .brand-text .eyebrow{
+    font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold-light); font-weight:700;
+  }
+  .brand-text h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700; font-size:19px; margin:1px 0 0;
+    letter-spacing:.01em;
+  }
+  .sub{
+    font-size:11.5px; color:#c3cbe0; margin-top:5px;
+  }
+
+  .progress-wrap{margin-top:14px;}
+  .progress-labels{display:flex; justify-content:space-between; font-size:11px; color:#c3cbe0; margin-bottom:5px;}
+  .progress-labels b{color:#fff; font-weight:700;}
+  .bar-track{height:7px; border-radius:6px; background:rgba(255,255,255,.14); overflow:hidden;}
+  .bar-fill{height:100%; background:linear-gradient(90deg,var(--gold) 0%, var(--gold-light) 100%); width:0%; transition:width .35s ease; border-radius:6px;}
+
+  /* ---------- Search & filters ---------- */
+  .controls{padding:14px 16px 4px;}
+  .search-box{
+    display:flex; align-items:center; gap:8px;
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:10px 12px; box-shadow:0 1px 3px rgba(20,36,74,.06);
+  }
+  .search-box svg{flex-shrink:0;}
+  .search-box input{
+    border:none; outline:none; flex:1; font-size:14.5px; font-family:'Inter',sans-serif;
+    background:transparent; color:var(--ink);
+  }
+  .search-box input::placeholder{color:#a8a49a;}
+
+  .chips{display:flex; gap:7px; overflow-x:auto; padding:12px 16px 4px; scrollbar-width:none;}
+  .chips::-webkit-scrollbar{display:none;}
+  .chip{
+    flex-shrink:0; padding:8px 13px; border-radius:999px; font-size:12.5px; font-weight:600;
+    border:1.5px solid var(--line); background:#fff; color:var(--navy); cursor:pointer;
+    white-space:nowrap; transition:.15s;
+  }
+  .chip .n{opacity:.6; font-weight:500; margin-left:3px;}
+  .chip.active{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .chip.active .n{color:var(--gold-light); opacity:1;}
+
+  /* ---------- Section divider ---------- */
+  .section-heading{
+    padding:18px 16px 8px; display:flex; align-items:baseline; gap:9px;
+  }
+  .section-heading .letter{
+    font-family:'Cormorant Garamond',serif; font-weight:700; font-size:22px; color:var(--navy);
+  }
+  .section-heading .title{font-size:12.5px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  .section-heading .pct{margin-left:auto; font-size:11.5px; color:var(--muted); font-weight:600;}
+
+  /* ---------- Cards ---------- */
+  .cards{padding:0 16px;}
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    margin-bottom:12px; overflow:hidden;
+    box-shadow:0 1px 2px rgba(20,36,74,.05);
+    transition:box-shadow .2s;
+  }
+  .card.done{border-color:#cfe3d7;}
+  .q-row{
+    padding:14px 15px 12px; display:flex; gap:11px; cursor:pointer;
+  }
+  .num-badge{
+    flex-shrink:0; width:30px; height:30px; border-radius:9px;
+    background:var(--cream-2); color:var(--navy); font-weight:800; font-size:12.5px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Inter',sans-serif; border:1px solid var(--line);
+  }
+  .card.done .num-badge{background:var(--ok); color:#fff; border-color:var(--ok);}
+  .q-text{flex:1;}
+  .q-tag{font-size:10px; font-weight:700; color:var(--gold); letter-spacing:.05em; text-transform:uppercase; margin-bottom:3px;}
+  .q-body{font-size:14.5px; line-height:1.42; color:var(--ink); font-weight:500;}
+  .chevron{flex-shrink:0; align-self:center; transition:transform .25s; color:#b6b0a0;}
+  .card.open .chevron{transform:rotate(180deg);}
+
+  .a-wrap{
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    background:var(--cream); border-top:1px solid var(--line);
+  }
+  .card.open .a-wrap{max-height:600px;}
+  .a-inner{padding:13px 15px 16px 15px;}
+  .a-label{font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--ok); margin-bottom:6px; display:flex; align-items:center; gap:5px;}
+  .a-text{font-size:14.5px; line-height:1.5; color:var(--navy); font-weight:600;}
+  .a-note{margin-top:8px; font-size:12px; line-height:1.45; color:#8a7a3d; background:#fbf3d9; border:1px solid #eddfa3; border-radius:9px; padding:8px 10px;}
+  .a-note b{color:#6b5c1f;}
+
+  /* options for section B */
+  .opts{margin-top:2px;}
+  .opt{
+    font-size:13px; line-height:1.4; padding:8px 10px; border-radius:9px; margin-bottom:6px;
+    border:1.4px solid var(--line); color:#4b4d55; background:#fff;
+  }
+  .opt.correct{
+    border-color:var(--ok); background:#eaf5ee; color:#1f5a3d; font-weight:600;
+  }
+  .opt.correct::before{content:"✓ "; font-weight:800;}
+
+  .mark-btn{
+    margin-top:10px; display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; color:var(--navy);
+    background:#fff; border:1.4px solid var(--navy); border-radius:999px;
+    padding:6px 12px; cursor:pointer;
+  }
+  .card.done .mark-btn{background:var(--ok); border-color:var(--ok); color:#fff;}
+
+  /* ---------- Bottom nav ---------- */
+  .bottom-nav{
+    position:fixed; bottom:0; left:0; right:0; z-index:60;
+    background:#fff; border-top:1px solid var(--line);
+    display:flex; justify-content:space-around;
+    padding:9px 6px calc(9px + env(safe-area-inset-bottom));
+    box-shadow:0 -4px 14px rgba(20,36,74,.08);
+  }
+  .nav-btn{
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    font-size:10px; font-weight:700; color:#9a9484; background:none; border:none;
+    cursor:pointer; padding:4px 10px;
+  }
+  .nav-btn.active{color:var(--navy);}
+  .nav-btn.active svg{stroke:var(--navy);}
+
+  .empty-state{padding:40px 20px; text-align:center; color:var(--muted); font-size:13.5px;}
+
+  .footer-note{padding:22px 20px 10px; text-align:center; font-size:11px; color:#a49f8f; line-height:1.5;}
 </style>
 </head>
 <body>
-<div class="app">
-  <header class="header">
-    <div class="brand">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWAAAACPCAMAAADz2vGdAAAAwFBMVEX///8AC3wAAHQAAHkAAHMAAHrBw9zo6fIACHsAAHCHirgAAH6Ul8Onqs/k5vPDxt9qbaldYJ/5+v5zdqvZ2uhxdbAzOI21uNXu7vUwNo+usdPT1ecAAGv6+v3z9PoAAIFGSZPJyt2ChbdWWp+bncKoq80+Q5SEhbCQk8BZXaEmLIobIod5fbMMFoRER5JQU5sqMI0hKIoVHoc7Po8wNIpFTJ5XXaZXWZkIFYU0OpNoaqN8fq95f72Hi79yd7aRlcZUVIzBAAAQXElEQVR4nO1da3uiuhamWUFBFJVqoSLUC/bYq9VO97TTPef8/391spIAEQVtp1PtTN4PfbgF8CVZ96SGoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaHxhyLoKcAD6n5w6LergOe65SeDnvd5b1KNuk0y2D470M8P0OsPfdT4uvsrzdsPHXW3A9dR2aU9h/q/8qgPRUJOUpg37LvHJmQHaOstd2rYNnb5gA63/7pzMox/4UXvCVX77ISclxLsmkdEcHRtZoSSJjswoznjd29hxCcmEhw7tLb1/Jx2th7fE4XmzQqC69YREWzU8i5sQZ0dOM+7MJm86UaC4IsSgo1SQvbDevOkguD45JgINqY5oYBSckysjHHS2/8+GwQHA98I5826PD9uzcSGn+CGO09J8AbzZjb6e80gajXTJs15kr5BmDbH7WazCynBcbuptDfiwbxxQo6JYDeXCSd0zA50FcZH+99ng+D+8LEztIkjjZF/7AdBScM22d9keCuO926GF3bKSETsZGqD2OnYQ3s4lLe/sh/lVtS1yeUqI9gZDoc0Y9R3hssz86gINm5zIQGXbN+FrAuf2CXDfQs2CPYJNAIfUlU5IY+CktCmoWE82aE47thNdumJ/AwP4JDlOd9s21ZojPvZW47kVsc+ixURsUza7TN4EIaZa9OBUT8uEcFEVq7nKI7DuWJZlBtDRWwQPKYX7MAZ+Sl25ynBxookRgzXghKf3nGpKel+It9TzcrO1LO7G42UYMbhuCiDa+k46ZDpsSk5hpnShU32s6M7xbJI9r3LFoIdRtBlSnAzI7hBzoyxLSVEnzz6szkMZaMR+U96wwDIyTxzdn6mBNeoGa8T7IUJuRAXfiONIyTYeFQIxd/tK5aFWd/ZXKCE4MdNgkMK8SSVEFewbDQa84Z8zFNOsOFOCYWB3MkIHpCLNYLrXbJcgMUJjpdkfowEq10YWBf2loq3sW8XbhOKGr9OaFscKCU4eqD+/Z1sxjSAeheVYKYAp2BLAyEj2CckUAiOHXvAHiVN9m/YQY6OYO9B6cGsB6iEmyf7OhsxgYWBUpBIHksJZqQ+ma9yu23jqDZSUaAQXMdPnbktGcGhTVoKwQPqGDnBU7I8OjsYf3rO58rATpGbEWSws3mKlk3MB4dkP04STBvyKfQsJXhMTHucNptScv76ZEqGn2hG8Ix2ZlcE5Af+Se/l8QUhyWAJprhbjX2gwRnI9oz9hX8L+2uOz0DdVPhEdop2277wRyZxphlz44sb9qtH5lzsJs5TppaWzzdZq2h+Q8jdRJ77x2ykJ9qPYMNCimpj7izkVtwx7YcQQMqOPtBv4R3I6/wlhXmD3L7htX87OgXHokcUOxjfu7+3qRYEaogzxs7nxankjT3ljBpP9IIg21WvMuIgl09rzdlTgvS+Bj4zDtI9j7WJgl8JK300Qjs3GbhrvCj6zsO3hCQ0irhUgjvoNtWKNto1kH1NNY1NDFQ+cYCvCiZFi4qOrPEuqH4ymj9rfvKSCbbAYT2ctA/9nl8WE4VPjLGoJgXPIb3iBfBy6PdM4fXCWrPf5UHMCLdvu+GuNoeEq1gM3APrKxoOTTRpUtDZrjt9EtqYMwTKTT9XbB+1Cr5S+Jyy/bAYbb8HKZ6PxPAJuM3Dk1tGwEcbNHa1OSDaioYjaLg/KiYFGuu11IYjr7vu1fObk0736n0fIpz1u9+n37v91rj6BhEPVguC4xUcO8FqEALfc5BnNwAjrHlK1IJd2aNkSADgDRH6DFGT+XIgQIj5VGUURs+QERzxKOAxE5woGeQVhlbU0HuyfgEsdtxM2M/07fZG7YQompUNpSqtFfE+IQg2vh95D46V30UxqNNQTTS8wlWv2NE32+8kOCH5VxXivtKtuc97sMgeHjHBp0pQB000NRknLd95IdBWgfH7CPZt/lAmHFA+AJyYN5XXTxWCO8dNcKjyicOymMBHmIW6lIrbvYvgWKSn4G4yDsOwNhkRUh3A634dgkcKn1g101aiPhgLjNDP8FW1Vzl2e+8iuMVbwSizHdzb6gKgr0Owr/DJc7LXBZOixWvJFoXPUIr3ESz01N5pky9EcLQqDH6lDBCcCFUgD66pgoRW6XfhFL6RYI9bXXC6f4svQ7CaJ7owME+kJDrRpLglFk8TFJ3nMuwgOKz5DMUv5PHsFJR6u5utdhEcsutrRxBe3TDA+koHxuxXj8qNWNWFFSGJcoLjWuPGpqIG2Zys/XhJ8LZwqBfOX4hoRkknc3MqCQ77BBtQ+/zgWU81T4QuRE/Na2CP4bKXJzBVd+SmXFiWEjy3KJj5zU01jSpcxW1uon9DcwPZgsyEqSA4uiVpZzDpO332j0KYkyZ+XdGkEH4ZOPje5wXttx2lBP/Iby1+u+qxnPKT5t3GdAVFJfC3tCXD5QTHZ/gGJuvB3Nk72zuT+DugFgEXa3kAgxBLMydUCQmd0NKpEaUEvwL2QMrGrngo98pTyGJZcIpjGgnmrajolSIYVUFwdMb3zmbj1g2/5pBpmJnKp5fzeZK+fKoCLRN/luqBXJXds5TgCWO22xy7bq1PRXBZFRJd8SQg03UxMWAfZDGvue54Avzxshq8lGCuRIQ0D5jhtyOm8XsRn4CZQtRT0mwfsIq3nik2/sYu3fChN1FK8E9rkHZZMVDWrDLvRn49IFcqxT40U7HR429jisKTMoK50DNlGRZPNFab7b8VzeuzFOcYZo/vsv2z65qxpgJ5TbYSBYJvJbKtlGBVqHB6zDP1dHCfjhagnfxatbSBR0QsUUJcRrA4LsdGgMaJuTyYnou8HFFhn3c2pbbHxMlc8aqQGt2CvRwN7hkXwzkNOx0wAFvjHbx3WsJTLyG4jpRmeRfvG9dzR2AOl2DN60BC1eQ+bO8YexFc20Yw1qnK51lktOXudbKTYC588pj1CAmudDwPjLXJXDg01fKU7Y7tXgSPtxLM+mhGcToZQMUeBE/WXW5B8GGKDaLbfjW413RWmMylFliZHeXirNZvL4J5RzO3TSENL6l45BbzKhQEV8lgEXu/atf8WdK47azeERf5KCQ2VIOgDlInc/HCakXvWcq1D5nKqybYC5PuCiiXNOb51ksGUi4pjkjUa/VvTNFK1B2VEfwiwspUeOQAFkNeIvuZUEMLJeC6uFhzWXe2tVP4rCLYnZxQzFhIgs+2XcOuEtZ4FpkI5g923sp6riBYZmdNR8XyILPZT2ELT+vgk5brpBANapLNK3kthUQFwRNgEhboIgmFLioLyomQMsgpXS2T+bxgvyRtfhxWVT2Y50KhE8UKDuIrK5Ul5eAOcrFIzbgxi9dZoNi4pQR79+yMRfrIz3hd2Rchvr4wr/qYrCMLMe/jJAs0lRDMYynmfdmNPw+j3R0YjaU6uliFyVw1u3jdWuinlOAOSe8gzbRygkUCyUaCm2jHEDENURC8rCKYfxoeRjkslBRbFXjEYW0yF775ovBxzJVqs5YRzO2PdE6uILg0niFiJLSOU2rQcXDEYUGwsN9KCBYCbFu8evDvvz/fMOX6F+Hs04HxTVHqFtNxvYJ+XAvalBLM3ex08vAGwetGr+iHaI8JYS1HyB4Ei3cDp/j06L8oxVqfFX+fb1FUWwGo6DeC8LdrzQs1rWUEP4FC8LhIcLep+LNCQfDeLhwHOVlIEHxdJSKkJ0TUAA8qjp9RffpPzWh9Th9210qUKsEd5GIaiXnQ6iXrnqggWATb4rrbC8fM6mfbL6qPJTpmrouicwqXyZjr+6Ap45I4znkmMDWYXWFFVBJcE8KPTFMx3H5hZnA9MXovsRNE//sNdG5CWajAKnc0pAsRy+p2VR60qHJBf/3mgmDLYXarzUARkLJgAcqcOOEL1ig1Qt4z8GD8xfXDM5Wxd86qSGhw1ej5vDil2lU2jKs0sNxp+n7yalH0M3o1o/dQY+rxc+qbcxPCgnF9B2JjfUWfZ+xm6gUFM1PWclvqIMF0tajYtGDR794QwNMWZI086b5YZrpWEPAQf+qak/t+9xsh/KYimVJKsPdA5E8Tvhz3l9yB0VtN2dXVVUkfhbzGYd/FYtR03I4m7qaFzQk2HiAbMnTGtUAuXGJ7XesCuZbSciroMrHVhEsWESetyMmNqGqpWzae+MlFRNz7JC2XunHg7LmwWLGcqgLulhgHV+rukshAwaqGitOCfIJ51HcoyaPB1JqnL5bSZRIn4ZN7LSGTvvMqZDF7tEM4/dkrJCuZwMNaQvMUpXGYRK7huv/uTdGvIZa9jKuwsLYDSKhqql2N83P+hh8adE43IMS0N39mQpncz5C8yyE8vyiDIa7NFxdCaj/3fdWwni3x4HWCPN0OycU5Nz4SvO8P0SH5dl8xFj2/c4G3si86A6nswlvfb36OikPIWjs0wgJCSSXos7Fe0grKInbTXU9ah+em1pi3dezErrvNCcuW94vekP1x3fVMRvB5boYhhKpFMI7X2elzcB3e2GY6i2SzxhagK8XjgXtEffgaAepMxZz6o546dVhcgQiJXO7hNPPk0GAzfLHpkWpkcCmfgezv4zSLqXIvG5+C7r9Kx1+ICRb/RuaWgb8JHhoPi10YjiDsesSI0Wmd7Bn1EUvernfhQ9YkfRW4uxNzAubSW58gfnLQkqQvg+4eGk6AC+y1dJxFDp42OHooi5qo3sNW8HXLnhWfxK5a0aletPL/Tqhx3s6gVQ0UuOFAQXmyNhyZNnWm2gnJA+/m3QcuJ9+iBK6XBECvj5L5vx9p0bZtuOzhCr7g/PVS2rOEGfyhS8UsQai/hBARTXTHoRgfcYgnvFDIjt44N/Pq6SVG2P6jjD+Rvv9Qizak6XQ3YjJX2uuamDfCQ+7QRtdkMiSM0SmwwzJg3nvEgOQV27ikbMM8+NyrDwQPRUB/94V7g3VcSdALdmVvaI6+O6aNkecGscdGzFe1DIfOYmoCd2BCAFiMkGB/+Px9BCb91MDi7wUG08R/HfgodCDlpwM4MpIYqxXgiR3wVsznnlCMIQczdrgGPMt8DTiVtNfG5WgijFXvmM//tcD834/9PV1Ip3idQiZ6lsAX9vAZdyslhnyHpRFjuj7rLibHtabnLyIwoXrli7eiD2nRyQLEnLYgrK3ggR+aQr7krBv6PCTtE/WfBbhhC/6sMHOz5F/ivBdshEsKL0zMy9e7AN2VtFOaJBUgvQUxO3fwQxXarDef0YuOWTGP9Asi+uCYTY/KQpzQxnBQYNI+igheC+zC3VIEOV0bF2y+Qxlcy2Wub5OZEYM07zS241L+y4x7wLqHhFAP9dgID03tZEDk4s+YDbmDVyykyGbDLMg9/68Df5KS+3i4TM52/NY1UORpjoT2HF4I5dsOTo9Gt7yLCrANPC3YIfDot5Nb/CYr15iRP0sGfzzCB8r9BS6KQ5vYYHYowWkhwxmu84z/OoP50za561I+jf+KEtsejpiItgmlo/u3FgP8dYj8xo/XRBrX49fTZlA/nQRGb97ECFzC6z9qr6eJ13sVfbXNrm+hGz04fZ0Z/utRrW2voaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhcRz4P1OZHEAIX3P0AAAAAElFTkSuQmCC" alt="Universidad La Salle Oaxaca">
-      <div><h1>Guía móvil de estudio</h1><p>Estructura Socioeconómica de México · Examen extraordinario</p></div>
+
+<header class="top">
+  <div class="brand-row">
+    <div class="logo-chip"><img src="data:image/png;base64,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" alt="Universidad La Salle Oaxaca"></div>
+    <div class="brand-text">
+      <div class="eyebrow">Universidad La Salle Oaxaca</div>
+      <h1>Estructura Socioeconómica de México</h1>
+      <div class="sub">Guía de repaso · Examen Extraordinario + Extra de Apuntes · 61 reactivos</div>
     </div>
-    <div class="progressWrap">
-      <div class="progressInfo"><span id="scoreText">Avance: 0/53</span><span id="scorePct">0%</span></div>
-      <div class="bar"><div class="fill" id="fill"></div></div>
-    </div>
-  </header>
-  <nav class="tabs" id="tabs"></nav>
-  <main id="main"></main>
-  <div class="footerbar"><button class="btn secondary" onclick="prevSection()">Anterior</button><button class="btn" onclick="nextSection()">Siguiente</button></div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-labels"><span>Progreso de estudio</span><span><b id="progCount">0</b>/<span id="progTotal">0</span> repasadas</span></div>
+    <div class="bar-track"><div class="bar-fill" id="progBar"></div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-box">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#a8a49a" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input id="searchInput" type="text" placeholder="Buscar por palabra clave…">
+  </div>
 </div>
+
+<div class="chips" id="chipRow"></div>
+
+<div id="content"></div>
+
+<div class="footer-note">Elaborado como material de apoyo para el repaso del examen extraordinario.<br>Verifica siempre las respuestas marcadas con nota ⚠️ contra tus apuntes de clase.</div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-filter="all">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    Todas
+  </button>
+  <button class="nav-btn" data-filter="pending">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+    Pendientes
+  </button>
+  <button class="nav-btn" data-filter="done">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    Repasadas
+  </button>
+  <button class="nav-btn" data-filter="reset">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+    Reiniciar
+  </button>
+</nav>
+
 <script>
-const DATA = {"logo": "data:image/png;base64,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", "sections": [{"id": "a", "title": "a) Vocablos básicos", "percent": "6%", "type": "fill", "items": [{"q": "SOCIEDAD: Conjunto de personas que existen desde el inicio de nuestra especie, aunque inicialmente estuvo conformada más ________ y centrada en ________ la supervivencia de unidades familiares o interfamiliares mínimas, como o las ________.", "a": ["simple", "asegurar", "tribus"], "hint": "Concepto social básico."}, {"q": "ECONOMÍA: Actividad encaminada al estudio de la ________, producción, intercambio, distribución y ________ de todos los bienes y servicios que la sociedad necesita para vivir.", "a": ["extracción", "consumo"], "hint": "Proceso económico completo."}, {"q": "SOCIOECONOMÍA: Actividades económicas que emprende la sociedad a través del ________ para satisfacer las ________ de sus miembros.", "a": ["trabajo", "necesidades"], "hint": "Relaciona economía, sociedad y trabajo."}]}, {"id": "b", "title": "b) Modelos económicos: toca la característica correcta", "percent": "8%", "type": "choiceGrid", "items": [{"model": "Mercantilismo", "options": ["El fundador fue el doctor François Quesnay, quien consideraba el dinero como una riqueza estéril.", "La riqueza la miden en dinero, en la acumulación de metales preciosos.", "La competencia es un aliciente extraordinario que obliga a los productores a la innovación."], "answer": 1}, {"model": "Fisiocracia", "options": ["El fundador fue el doctor François Quesnay, quien consideraba el dinero como una riqueza estéril.", "Abarca el período de 1450 hasta 1750.", "La competencia es un aliciente extraordinario que obliga a los productores a la innovación."], "answer": 0}, {"model": "Teoría Keynesiana", "options": ["La competencia es un aliciente extraordinario que obliga a los productores a la innovación.", "Cuando disminuye el gasto para inversión, la economía experimenta una recesión.", "El fundador fue el doctor François Quesnay, quien consideraba el dinero como una riqueza estéril."], "answer": 1}, {"model": "Teoría Clásica", "options": ["Economía en la que las relaciones entre capital y trabajo son relaciones de cambio.", "Cuando los trabajadores se especializan, aumentan su rendimiento.", "El fundador fue el doctor François Quesnay, quien consideraba el dinero como una riqueza estéril."], "answer": 1}, {"model": "Mercantilismo / Fisiocracia", "options": ["La competencia es un aliciente extraordinario que obliga a los productores a la innovación.", "La sociedad se divide en tres clases: la productiva, la propietaria y la estéril.", "La principal riqueza de un país la constituye su población."], "answer": 1, "note": "En la imagen aparece el rótulo repetido; se deja editable por si el docente confirma que corresponde a Fisiocracia."}, {"model": "Teoría Keynesiana", "options": ["Economía en la que las relaciones entre capital y trabajo son relaciones de cambio.", "Afirma que los países latinoamericanos venden materias primas a los países desarrollados.", "Tiene como base fundamental la idea de que la intervención del gobierno puede estabilizar la economía."], "answer": 2}, {"model": "Materialismo Histórico", "options": ["Abarca el período de 1450 hasta 1750.", "Las fuerzas productivas evolucionan de acuerdo al sistema de las relaciones de producción: la superestructura.", "La competencia sin ninguna reglamentación es la muerte de la competencia."], "answer": 1}, {"model": "Teoría Clásica", "options": ["Destaca la importancia de las leyes económicas, la competencia y el papel de la iniciativa privada en la economía.", "Economía de separación entre capital y trabajo.", "La principal riqueza de un país la constituye su población."], "answer": 0}]}, {"id": "c", "title": "c) Anota el vocabulario correspondiente", "percent": "20%", "type": "fill", "items": [{"q": "Nombre del movimiento filosófico impulsado por los hermanos Flores Magón durante la época de crisis del Porfiriato.", "a": ["Magonismo", "Movimiento magonista"]}, {"q": "Etapa de la historia universal que abarca desde el siglo V, hasta el descubrimiento de América (XV).", "a": ["Edad Media"]}, {"q": "Presidente que, con el propósito de lograr el reconocimiento del gobierno de Estados Unidos de Norteamérica, firmó los tratados de Bucarelli.", "a": ["Álvaro Obregón", "Alvaro Obregon"]}, {"q": "Nombre del proyecto artístico importado de intelectuales rusos para plasmar los ideales de la revolución mexicana en edificios públicos.", "a": ["Muralismo mexicano", "Muralismo"]}, {"q": "Presidente que modificó el período presidencial de cuatro a seis años en cuanto a su ejercicio.", "a": ["Plutarco Elías Calles", "Plutarco Elias Calles"]}, {"q": "Etapa de la historia universal que abarca del siglo XV hasta la Revolución Francesa (XVIII).", "a": ["Edad Moderna"]}, {"q": "Tiene como objetivo principal mejorar el bienestar o la calidad de vida de los habitantes de una población.", "a": ["Desarrollo", "Desarrollo social"]}, {"q": "Durante su período de gobierno entre 1920 y 1924, aumentó significativamente la exportación de petróleo para recuperar la economía mexicana.", "a": ["Álvaro Obregón", "Alvaro Obregon"]}, {"q": "Conflicto histórico que se suscitó en 1926, por el no reconocimiento de personalidad jurídica a la iglesia católica ni derecho a poseer bienes raíces.", "a": ["Guerra Cristera", "Cristiada"]}, {"q": "Etapa de la historia universal que comprende desde el siglo XVIII, hasta la actualidad (siglo XXI).", "a": ["Edad Contemporánea", "Edad Contemporanea"]}, {"q": "Político mexicano que asumió la Presidencia de México en 1913, y a los tres cuartos de hora presentó su renuncia ante el Congreso de la Unión.", "a": ["Pedro Lascuráin", "Pedro Lascurain", "Pedro Lascuráin Paredes"]}, {"q": "Consiste en aprovechar los recursos naturales para satisfacer necesidades, pero atendiendo a las necesidades de las generaciones futuras.", "a": ["Desarrollo sustentable", "Desarrollo sostenible"]}, {"q": "Inversión del Estado en materia económica, con el propósito de satisfacer las necesidades básicas de los ciudadanos.", "a": ["Gasto público", "Inversión pública", "Politica social", "Política social"]}, {"q": "Ruptura del equilibrio psicofisiológico entre el ser humano y los recursos naturales.", "a": ["Desequilibrio ecológico", "Desequilibrio ecologico", "Problema ecológico", "Problema ecologico"]}, {"q": "Etapa de la historia universal que comprende desde el 3500 a.C. hasta la caída del Imperio Romano de Occidente (Siglo V).", "a": ["Edad Antigua"]}, {"q": "En la sociedad evolucionada, para producir cada bien se requieren tres factores productivos.", "a": ["Tierra, trabajo y capital", "Tierra trabajo capital"]}, {"q": "Anota las dos partes en que se divide la CPEUM de 1917, así como los artículos que comprende para su estudio.", "a": ["Dogmática y orgánica; artículos 1 al 29 y 30 al 136", "Parte dogmática y parte orgánica; 1-29 y 30-136", "Dogmatica y organica 1-29 30-136"]}, {"q": "Es el conjunto de concepciones que los hombres de la época tienen acerca de sí mismos, del universo, de la vida.", "a": ["Cosmovisión", "Cosmovision"]}, {"q": "Autor de la obra: La riqueza de las naciones (1776), considerada como la primera investigación de orden económico en las sociedades modernas.", "a": ["Adam Smith"]}, {"q": "Etapa de la historia universal que inicia desde hace tres millones de años, hasta la aparición de la escritura.", "a": ["Prehistoria"]}]}, {"id": "d", "title": "d) Respuesta correcta", "percent": "11%", "type": "fill", "items": [{"q": "Construido con cuatro pilares importantes, obras del maestro Oliverio Martínez, que simbolizan las cuatro grandes transformaciones.", "a": ["Monumento a la Revolución", "Monumento a la Revolucion"], "hint": "Sus grupos escultóricos aluden a Independencia, Reforma, Leyes Agrarias y Leyes Obreras."}, {"q": "El período identificado como Porfiriato abarcó de 1877 a 1880 y de 1884 a 1911 generó crecimiento y desarrollo económico ¿falso o verdadero?", "a": ["Verdadero"]}, {"q": "Presidente de la República que logró por primera vez un superávit con la administración de José Yves Limantour en el año de 1894.", "a": ["Porfirio Díaz", "Porfirio Diaz"]}, {"q": "Huelga que surgió en la CDMX en 1876, por abusos por parte de los dueños de la fábrica de tejidos que les robaban a los trabajadores por medio de descuentos y multas.", "a": ["Huelga de La Fama Montañesa", "La Fama Montañesa", "Huelga de La Fama Montana"]}, {"q": "Nombre de la prisión que se inauguró durante el Porfiriato el 29 de septiembre de 1900, y actualmente es el Archivo General de la Nación.", "a": ["Lecumberri", "Palacio de Lecumberri"]}, {"q": "Nombre del pacto que unió a los ejércitos de Villa y Zapata el 4 de diciembre de 1914 ante el descontento respecto al ejército constitucionalista de Venustiano Carranza.", "a": ["Pacto de Xochimilco"]}, {"q": "Nombre del acontecimiento histórico en el que Madero y Pino Suárez fueron asesinados en la Penitenciaría, edificio que hoy es el Archivo General de la Nación, el 19 de febrero de 1913.", "a": ["Decena Trágica", "Decena Tragica"]}, {"q": "Acuerdo celebrado entre los gobiernos de México y Estados Unidos de Norteamérica en 1923 que garantizaría los derechos de propiedad de extranjeros y de sus compañías petroleras en territorio mexicano.", "a": ["Tratados de Bucareli", "Convenio de Bucareli"]}, {"q": "El periodo histórico y político de México denominado ________ abarcó desde 1928, con el gobierno de Emilio Portes Gil como presidente, hasta 1934 con el gobierno de ________.", "a": ["Maximato; Lázaro Cárdenas", "Maximato Lazaro Cardenas", "Maximato; Lazaro Cardenas"]}, {"q": "Nombre del secretario o ministro de Instrucción Pública desde 1921 hasta 1924, que impulsó la primera reforma educativa del siglo XX en México.", "a": ["José Vasconcelos", "Jose Vasconcelos"]}]}, {"id": "e", "title": "e) Ciclo económico", "percent": "8%", "type": "cycle", "items": [{"q": "Se trata de una serie de ________ por la que pasa la ________ y que suceden o transitan de manera ________ hasta llegar a la fase final en la que el ciclo económico comienza de nuevo.", "a": ["fases", "economía", "periódica"]}, {"q": "Ordena las etapas del ciclo económico.", "a": ["Recuperación", "Expansión", "Recesión", "Depresión"]}]}]};
-let active=0;
-let state={};
-function norm(s){return (s||'').toString().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9ñ]+/g,' ').trim();}
-function acceptable(val, answers){let v=norm(val); return answers.some(a=>{let n=norm(a); return v===n || (v.length>5 && (v.includes(n)||n.includes(v)));});}
-function totalItems(){return DATA.sections.reduce((n,s)=>n+s.items.length,0)}
-function answeredCount(){return Object.values(state).filter(Boolean).length}
-function updateProgress(){let a=answeredCount(), t=totalItems();document.getElementById('scoreText').textContent=`Avance: ${a}/${t}`;document.getElementById('scorePct').textContent=Math.round(a*100/t)+'%';document.getElementById('fill').style.width=(a*100/t)+'%';}
-function makeTabs(){const tabs=document.getElementById('tabs');tabs.innerHTML='';DATA.sections.forEach((s,i)=>{let b=document.createElement('button');b.className='tab'+(i===active?' active':'');b.textContent=s.title.split(')')[0]+') '+s.percent;b.onclick=()=>{active=i;render();};tabs.appendChild(b);})}
-function render(){makeTabs();const main=document.getElementById('main');main.innerHTML='';DATA.sections.forEach((s,si)=>{const p=document.createElement('section');p.className='panel'+(si===active?' active':'');p.innerHTML=`<div class="sectionTitle"><h2>${s.title}</h2><span class="badge">${s.percent}</span></div>`; if(s.type==='fill') renderFill(p,s,si); if(s.type==='choiceGrid') renderChoice(p,s,si); if(s.type==='cycle') renderCycle(p,s,si); main.appendChild(p);});updateProgress();}
-function renderFill(p,s,si){s.items.forEach((it,ii)=>{let id=`${s.id}-${ii}`;let c=document.createElement('div');c.className='card';c.innerHTML=`<div class="qhead"><div class="num">${ii+1}</div><div class="qtext">${it.q}</div></div>${it.hint?`<div class="small">Pista: ${it.hint}</div>`:''}<input class="input" id="inp-${id}" placeholder="Escribe tu respuesta"><div class="actions"><button class="btn" onclick="checkFill('${id}',${si},${ii})">Revisar</button><button class="btn ghost" onclick="showAnswer('${id}')">Ver respuesta</button></div><div class="feedback" id="fb-${id}"></div><div class="answer" id="ans-${id}"><b>Respuesta esperada:</b> ${Array.isArray(it.a)?it.a[0]:it.a}</div>`;p.appendChild(c);})}
-function checkFill(id,si,ii){let it=DATA.sections[si].items[ii];let v=document.getElementById('inp-'+id).value;let ok=acceptable(v,Array.isArray(it.a)?it.a:[it.a]);let fb=document.getElementById('fb-'+id);fb.className='feedback '+(ok?'ok':'bad');fb.textContent=ok?'Correcto.':'Revisa tu respuesta o toca “Ver respuesta”.'; if(ok) state[id]=true; updateProgress();}
-function showAnswer(id){document.getElementById('ans-'+id).classList.toggle('show'); state[id]=true; updateProgress();}
-function renderChoice(p,s,si){s.items.forEach((it,ii)=>{let id=`${s.id}-${ii}`;let c=document.createElement('div');c.className='card';let opts=it.options.map((o,oi)=>`<div class="option" onclick="pickOption('${id}',${si},${ii},${oi},this)">${o}</div>`).join('');c.innerHTML=`<div class="qhead"><div class="num">${ii+1}</div><div><div class="model">${it.model}</div><div class="small">Selecciona el recuadro que corresponde al modelo.</div></div></div>${opts}${it.note?`<div class="note">${it.note}</div>`:''}<div class="answer" id="ans-${id}"><b>Respuesta esperada:</b> ${it.options[it.answer]}</div>`;p.appendChild(c);})}
-function pickOption(id,si,ii,oi,el){let it=DATA.sections[si].items[ii];[...el.parentNode.querySelectorAll('.option')].forEach(x=>x.classList.remove('selected','good','wrong'));el.classList.add('selected',oi===it.answer?'good':'wrong');document.getElementById('ans-'+id).classList.add('show'); if(oi===it.answer) state[id]=true; updateProgress();}
-function renderCycle(p,s,si){const box=document.createElement('div');box.className='cycleBox';box.innerHTML=`<div class="wave"><svg viewBox="0 0 420 100" preserveAspectRatio="none"><path d="M10 70 C70 80, 90 70, 125 35 S205 15, 245 55 S320 95, 365 55 S405 50, 415 55" fill="none" stroke="#001E7C" stroke-width="4" stroke-linecap="round"/><circle cx="125" cy="35" r="5" fill="#B08A00"/><circle cx="245" cy="55" r="5" fill="#B08A00"/><circle cx="330" cy="78" r="5" fill="#B08A00"/></svg></div><div class="labels"><span>Recuperación</span><span>Expansión</span><span>Recesión</span><span>Depresión</span></div></div>`;p.appendChild(box); renderFill(p,s,si);}
-function nextSection(){active=Math.min(active+1,DATA.sections.length-1);render();window.scrollTo(0,0)}
-function prevSection(){active=Math.max(active-1,0);render();window.scrollTo(0,0)}
+const DATA = [{"id": "A1", "section": "A", "num": 1, "q": "SOCIEDAD — Conjunto de personas que existen desde el inicio de nuestra especie, aunque inicialmente estuvo conformada más ____ y centrada en ____ la supervivencia de unidades familiares o interfamiliares mínimas, como o las ____.", "a": "Modelo de respuesta: conformada de manera dispersa y nómada, centrada en garantizar la supervivencia, organizada en unidades familiares o interfamiliares mínimas, como los clanes o las tribus.", "opts": null, "correctIdx": null, "note": "Es un ejercicio de \"complete el espacio\"; las palabras exactas dependen de los apuntes del profesor. Aquí se ofrece una respuesta modelo con el mismo sentido.", "tag": null}, {"id": "A2", "section": "A", "num": 2, "q": "ECONOMÍA — Actividad encaminada al estudio de la ____, producción, intercambio, distribución y ____ de todos los bienes y servicios que la sociedad necesita para vivir.", "a": "Según los apuntes de clase: la economía es la ciencia social que estudia cómo las sociedades administran los recursos escasos para producir bienes y servicios y distribuirlos entre los individuos, con el fin de satisfacer las necesidades humanas (ilimitadas). Los espacios se completan con: \"administración de los recursos escasos\" y \"consumo\" — recuerda que las tres actividades económicas esenciales son Producción, Distribución y Consumo.", "opts": null, "correctIdx": null, "note": "Fuente: Apuntes de clase — Módulo 1.1 y 1.2 (Las Tres Actividades Económicas Esenciales).", "tag": null}, {"id": "A3", "section": "A", "num": 3, "q": "SOCIOECONOMÍA — Actividades económicas que emprende la sociedad a través del ____ para satisfacer las ____ de sus miembros.", "a": "Modelo de respuesta: actividades económicas que emprende la sociedad a través del trabajo y sus instituciones para satisfacer las necesidades de sus miembros.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "B1", "section": "B", "num": 1, "q": "¿Cuál característica corresponde a MERCANTILISMO?", "a": null, "opts": ["El fundador fue el doctor Francois Quesnay, quien consideraba el dinero como una riqueza estéril.", "La riqueza la miden en dinero, en la acumulación de metales preciosos.", "La competencia es un aliciente extraordinario que obliga a los productores a la innovación."], "correctIdx": 1, "note": null, "tag": "Mercantilismo"}, {"id": "B2", "section": "B", "num": 2, "q": "¿Cuál característica corresponde a FISIOCRACIA?", "a": null, "opts": ["El fundador fue el doctor Francois Quesnay, quien consideraba el dinero como una riqueza estéril.", "Abarca el período de 1450 hasta 1750.", "La competencia es un aliciente extraordinario que obliga a los productores a la innovación."], "correctIdx": 0, "note": null, "tag": "Fisiocracia"}, {"id": "B3", "section": "B", "num": 3, "q": "¿Cuál característica corresponde a TEORÍA KEYNESIANA?", "a": null, "opts": ["La competencia es un aliciente extraordinario que obliga a los productores a la innovación.", "Cuando disminuye el gasto para inversión, la economía experimenta una recesión.", "El fundador fue el doctor Francois Quesnay, quien consideraba el dinero como una riqueza estéril."], "correctIdx": 1, "note": null, "tag": "Teoría Keynesiana"}, {"id": "B4", "section": "B", "num": 4, "q": "¿Cuál característica corresponde a TEORÍA CLÁSICA?", "a": null, "opts": ["Economía en la que las relaciones entre capital y trabajo son relaciones de cambio.", "Cuando los trabajadores se especializan, aumentan su rendimiento.", "El fundador fue el doctor Francois Quesnay, quien consideraba el dinero como una riqueza estéril."], "correctIdx": 0, "note": "La opción B (\"se especializan, aumentan su rendimiento\") también es una idea clásica (división del trabajo de Adam Smith); si tu profesor la marcó como correcta en clase, coméntalo con él.", "tag": "Teoría Clásica"}, {"id": "B5", "section": "B", "num": 5, "q": "¿Cuál característica corresponde a MERCANTILISMO?", "a": null, "opts": ["La competencia es un aliciente extraordinario que obliga a los productores a la innovación.", "La sociedad se divide en tres clases: la productiva, la propietaria y la estéril.", "La principal riqueza de un país la constituye su población."], "correctIdx": 2, "note": null, "tag": "Mercantilismo"}, {"id": "B6", "section": "B", "num": 6, "q": "¿Cuál característica corresponde a TEORÍA KEYNESIANA?", "a": null, "opts": ["Economía en la que las relaciones entre capital y trabajo son relaciones de cambio.", "Afirma que los países latinoamericanos venden materias primas a los países desarrollados.", "Tiene como base fundamental la idea de que la intervención del gobierno puede estabilizar la economía."], "correctIdx": 2, "note": null, "tag": "Teoría Keynesiana"}, {"id": "B7", "section": "B", "num": 7, "q": "¿Cuál característica corresponde a MATERIALISMO HISTÓRICO?", "a": null, "opts": ["Abarca el período de 1450 hasta 1750.", "Las fuerzas productivas evolucionan de acuerdo al sistema de las relaciones de producción: la superestructura.", "La competencia sin ninguna reglamentación es la muerte de la competencia."], "correctIdx": 1, "note": "Confirmado por los apuntes de clase (Módulos 3 y 4): la Infraestructura (fuerzas productivas + relaciones sociales de producción) determina la Superestructura (leyes, Estado, ideología), la cual a su vez justifica y mantiene ese modelo económico.", "tag": "Materialismo Histórico"}, {"id": "B8", "section": "B", "num": 8, "q": "¿Cuál característica corresponde a TEORÍA CLÁSICA?", "a": null, "opts": ["Destaca la importancia de las leyes económicas, la competencia y del papel de la iniciativa privada en la economía.", "Economía de separación entre capital y trabajo.", "La principal riqueza de un país la constituye su población."], "correctIdx": 0, "note": null, "tag": "Teoría Clásica"}, {"id": "C1", "section": "C", "num": 1, "q": "Nombre del movimiento filosófico impulsado por los hermanos \"Flores Magón\" durante la época de crisis del Porfiriato.", "a": "Magonismo (corriente anarquista, base ideológica del Partido Liberal Mexicano).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C2", "section": "C", "num": 2, "q": "Etapa de la historia universal que abarca desde el siglo V, hasta el descubrimiento de América (XV).", "a": "Edad Media.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C3", "section": "C", "num": 3, "q": "Presidente que, con el propósito de lograr el reconocimiento del gobierno de Estados Unidos, firmó los tratados de Bucarelli.", "a": "Álvaro Obregón.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C4", "section": "C", "num": 4, "q": "Nombre del proyecto artístico importado de intelectuales rusos para plasmar los ideales de la revolución mexicana en edificios públicos.", "a": "Muralismo mexicano.", "opts": null, "correctIdx": null, "note": "Verifica con tu profesor la referencia exacta a \"intelectuales rusos\"; el muralismo se asocia principalmente al proyecto cultural de José Vasconcelos, aunque tuvo influencias del arte revolucionario internacional.", "tag": null}, {"id": "C5", "section": "C", "num": 5, "q": "Presidente que modificó el período presidencial de cuatro a seis años en cuanto a su ejercicio.", "a": "Reforma impulsada durante el gobierno de Plutarco Elías Calles (1928); el primer presidente en ejercer el sexenio completo fue Lázaro Cárdenas.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C6", "section": "C", "num": 6, "q": "Etapa de la historia universal que abarca del siglo XV hasta la Revolución Francesa (XVIII).", "a": "Edad Moderna.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C7", "section": "C", "num": 7, "q": "Tiene como objetivo principal mejorar el bienestar o la calidad de vida de los habitantes de una población.", "a": "Desarrollo (económico y social).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C8", "section": "C", "num": 8, "q": "Durante su periodo de gobierno entre 1920 y 1924, aumentó significativamente la exportación de petróleo para recuperar la economía mexicana.", "a": "Álvaro Obregón.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C9", "section": "C", "num": 9, "q": "Conflicto histórico que se suscitó en 1926, por el no reconocimiento de personalidad jurídica a la iglesia católica ni derecho a poseer bienes raíces.", "a": "La Guerra Cristera (conflicto religioso).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C10", "section": "C", "num": 10, "q": "Etapa de la historia universal que comprende desde el siglo XVII, hasta la actualidad (siglo XXI).", "a": "Edad Contemporánea.", "opts": null, "correctIdx": null, "note": "La cronología tradicional ubica el inicio de la Edad Contemporánea en el siglo XVIII (Revolución Francesa, 1789); confirma con tu profesor si en clase se maneja el siglo XVII como punto de partida.", "tag": null}, {"id": "C11", "section": "C", "num": 11, "q": "Político mexicano que asumió la Presidencia de México en 1913, y a los tres cuartos de hora presentó su renuncia ante el Congreso de la Unión.", "a": "Pedro Lascuráin Paredes (presidencia más breve de la historia de México).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C12", "section": "C", "num": 12, "q": "Consiste en aprovechar los recursos naturales para satisfacer necesidades, pero atendiendo a las necesidades de las generaciones futuras.", "a": "Desarrollo Sustentable.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C13", "section": "C", "num": 13, "q": "Inversión del Estado en materia económica, con el propósito de satisfacer las necesidades básicas de los ciudadanos.", "a": "Gasto público / inversión social del Estado.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C14", "section": "C", "num": 14, "q": "Ruptura del equilibrio psicofisiológico entre el ser humano y los recursos naturales.", "a": "Desequilibrio ecológico.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C15", "section": "C", "num": 15, "q": "Etapa de la historia universal que comprende desde el 3500 a.C. hasta la caída del Imperio Romano de Occidente (Siglo V).", "a": "Edad Antigua.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C16", "section": "C", "num": 16, "q": "En la sociedad evolucionada, para producir cada bien se requieren tres factores productivos.", "a": "Tierra, Trabajo y Capital.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C17", "section": "C", "num": 17, "q": "Anote las dos partes en que se divide la CPEUM de 1917, así como los artículos que comprende para su estudio.", "a": "Parte Dogmática (artículos 1° al 29) y Parte Orgánica (artículos 30 al 136).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C18", "section": "C", "num": 18, "q": "Es el conjunto de concepciones que los hombres de la época tienen acerca de sí mismos, del universo, de la vida.", "a": "Cosmovisión.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C19", "section": "C", "num": 19, "q": "Autor de la obra: La riqueza de las naciones (1776), considerada como la primera investigación de orden económico en las sociedades modernas.", "a": "Adam Smith.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "C20", "section": "C", "num": 20, "q": "Etapa de la historia universal que inicia desde hace tres millones de años, hasta la aparición de la escritura.", "a": "Prehistoria.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D1", "section": "D", "num": 1, "q": "Construido con cuatro pilares importantes, obras del maestro Oliverio Martínez, que simbolizan las cuatro grandes transformaciones.", "a": "El Monumento a la Revolución (Ciudad de México).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D2", "section": "D", "num": 2, "q": "El periodo identificado como PORFIRIATO abarcó de 1877 a 1880 y de 1884 a 1911 y generó crecimiento y desarrollo económico. ¿Falso o verdadero?", "a": "Verdadero.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D3", "section": "D", "num": 3, "q": "Presidente de la República que logró por vez primera un SUPERÁVIT con la administración de José Yves Limantour en el año de 1894.", "a": "Porfirio Díaz.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D4", "section": "D", "num": 4, "q": "Huelga que surgió en la CDMX en 1876, por abusos por parte de los dueños de la fábrica de tejidos que les robaban a los trabajadores por medio de descuentos y multas.", "a": "Huelga obrera textil en fábricas del Distrito Federal (p. ej. San Fernando, Tlalpan).", "opts": null, "correctIdx": null, "note": "Este dato es muy específico del material del profesor; no se encontró una fuente histórica ampliamente documentada que confirme el nombre exacto de la huelga de 1876 en la CDMX. Te recomiendo confirmarlo directamente con tus apuntes o con el profesor antes del examen.", "tag": null}, {"id": "D5", "section": "D", "num": 5, "q": "Nombre de la prisión que se inauguró durante el Porfiriato el 29 de septiembre de 1900, y actualmente es el Archivo General de la Nación.", "a": "Palacio de Lecumberri.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D6", "section": "D", "num": 6, "q": "Nombre del pacto que unió a los ejércitos de Villa y Zapata el 4 de diciembre de 1914 ante el descontento que surgió con respecto al ejército constitucionalista de Venustiano Carranza.", "a": "Pacto (Convenio) de Xochimilco.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D7", "section": "D", "num": 7, "q": "Nombre del acontecimiento histórico en el que Madero y Pino Suárez fueron asesinados en la Penitenciaría, edificio que hoy es el Archivo General de la Nación, el 19 de febrero de 1913.", "a": "La Decena Trágica.", "opts": null, "correctIdx": null, "note": "El asesinato de Madero y Pino Suárez ocurrió el 22 de febrero de 1913, al concluir la Decena Trágica (9 al 19 de febrero de 1913); el 19 de febrero fue cuando Madero fue obligado a renunciar.", "tag": null}, {"id": "D8", "section": "D", "num": 8, "q": "Acuerdo celebrado entre los gobiernos de México y Estados Unidos de Norteamérica en 1923 que garantizaría los derechos de propiedad de los extranjeros y de sus compañías petroleras en territorio mexicano.", "a": "Los Tratados de Bucarelli.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D9", "section": "D", "num": 9, "q": "El periodo histórico y político de México denominado ____ abarcó desde 1928, con el gobierno de Emilio Portes Gil como presidente, hasta 1934 con el gobierno de ____.", "a": "El Maximato; finalizó con el gobierno de Abelardo L. Rodríguez (1932–1934), justo antes de que iniciara Lázaro Cárdenas en diciembre de 1934. (Los tres presidentes del Maximato fueron Portes Gil, Pascual Ortiz Rubio y Abelardo L. Rodríguez, bajo la influencia de Plutarco Elías Calles.)", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "D10", "section": "D", "num": 10, "q": "Nombre del secretario o ministro de Instrucción Pública desde 1921 hasta 1924, que impulsó la primera reforma educativa del siglo XX en México.", "a": "José Vasconcelos.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "E1", "section": "E", "num": 1, "q": "Se trata de una serie de ____ por la que pasa la ____ y que suceden o transitan de manera ____, hasta llegar a la fase final en la que el ciclo económico comienza de nuevo.", "a": "Se trata de una serie de fases o etapas por la que pasa la economía y que suceden o transitan de manera cíclica (recurrente), hasta llegar a la fase final en la que el ciclo económico comienza de nuevo.", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "E2", "section": "E", "num": 2, "q": "Anote las cuatro etapas que comprende el Ciclo Económico, según el esquema del examen.", "a": "Expansión → Recesión → Depresión → Recuperación (y el ciclo vuelve a comenzar).", "opts": null, "correctIdx": null, "note": null, "tag": null}, {"id": "F1", "section": "F", "num": 1, "q": "¿Cuál es el objeto de estudio de la economía como ciencia social?", "a": "Estudia cómo las sociedades administran los recursos escasos (limitados) para producir bienes y servicios, y distribuirlos con el fin de satisfacer las necesidades humanas (ilimitadas).", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 1"}, {"id": "F2", "section": "F", "num": 2, "q": "Explica brevemente las tres actividades económicas esenciales.", "a": "Producción: transformación de materias primas mediante factores productivos. Distribución: traslado y reparto de lo producido hacia los mercados. Consumo: utilización final del bien o servicio para satisfacer una necesidad.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 1"}, {"id": "F3", "section": "F", "num": 3, "q": "¿Qué componentes integran la \"Infraestructura\" o base económica de una sociedad?", "a": "Se compone de dos elementos: 1) Las fuerzas productivas (fuerza de trabajo y los medios de producción: herramientas, fábricas, materias primas). 2) Las relaciones sociales de producción (formas de propiedad y división del trabajo).", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 3"}, {"id": "F4", "section": "F", "num": 4, "q": "¿Qué es la \"Superestructura\" y cuál es su función?", "a": "Es el conjunto de elementos inmateriales, institucionales e ideológicos de una sociedad (leyes, Estado, religión, educación). Su función es regular, justificar y mantener el orden económico establecido por la infraestructura.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 4"}, {"id": "F5", "section": "F", "num": 5, "q": "¿Cuáles son las características principales del Modo de Producción Feudal?", "a": "La riqueza se concentraba en la posesión de la tierra (feudos). Los campesinos (siervos) estaban ligados a la tierra y obligados a pagar una renta o tributo (en especie o trabajo) al señor feudal a cambio de protección militar.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 5"}, {"id": "F6", "section": "F", "num": 6, "q": "¿Qué diferencia el Capitalismo del Socialismo en cuanto a la propiedad?", "a": "En el Capitalismo, los medios de producción son privados y el mercado libre busca la ganancia individual (burguesía y proletariado). En el Socialismo, los medios de producción son de propiedad social o estatal, y el Estado planifica la economía de forma centralizada.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 5"}, {"id": "F7", "section": "F", "num": 7, "q": "Menciona actividades clave de cada sector económico (Primario, Secundario y Terciario).", "a": "Primario: agricultura, ganadería, silvicultura, pesca y minería extractiva. Secundario: manufactura, construcción, industria automotriz, textil, petroquímica y energía. Terciario: comercio, transporte, educación, salud, turismo, banca y telecomunicaciones.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 6"}, {"id": "F8", "section": "F", "num": 8, "q": "¿Cuál es la diferencia entre Crecimiento Económico y Desarrollo Económico?", "a": "El Crecimiento es cuantitativo (mide el incremento de la producción a través del PIB). El Desarrollo es cualitativo (implica que ese crecimiento se traduzca en una mejora real en la calidad de vida y el bienestar social).", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 7"}, {"id": "F9", "section": "F", "num": 9, "q": "¿En qué consistió el Modelo de Sustitución de Importaciones y qué evento lo impulsó?", "a": "Consistió en industrializar al país produciendo internamente los bienes que antes se importaban, protegiendo al mercado con altos aranceles y subsidios a empresarios locales. Fue impulsado por la parálisis del comercio internacional durante la Segunda Guerra Mundial. Presidentes: Manuel Ávila Camacho (1940–1946) y Miguel Alemán Valdés (1946–1952).", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 8"}, {"id": "F10", "section": "F", "num": 10, "q": "¿Por qué se le llamó \"Milagro Mexicano\" al periodo del Desarrollo Estabilizador (1954–1970)?", "a": "Porque México logró un crecimiento económico sostenido y acelerado (6% a 7% anual) manteniendo una inflación muy baja y un tipo de cambio fijo y estable de $12.50 pesos por dólar. Fue diseñado por Antonio Ortiz Mena; presidentes: Ruiz Cortines, López Mateos y Díaz Ordaz.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 9"}, {"id": "F11", "section": "F", "num": 11, "q": "¿Cuáles fueron las causas del agotamiento del Desarrollo Estabilizador?", "a": "El abandono y descapitalización del campo para subsidiar a la industria, el proteccionismo excesivo que generó empresas ineficientes, y una alta concentración de la riqueza que profundizó la desigualdad.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 9"}, {"id": "F12", "section": "F", "num": 12, "q": "¿Qué distinguió al Modelo del Desarrollo Compartido (Luis Echeverría, 1970–1976)?", "a": "Buscó redistribuir la riqueza mediante la ampliación del gasto público y los subsidios. Al financiarse con deuda externa e impresión de dinero sin respaldo, generó inflación y provocó la devaluación del peso en 1976, rompiendo la paridad de $12.50.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 10"}, {"id": "F13", "section": "F", "num": 13, "q": "Explica el concepto de \"Petrolización de la Economía\".", "a": "Fue la situación durante el gobierno de José López Portillo (Alianza para la Producción, 1976–1982) en la que los ingresos, el PIB y el presupuesto estatal pasaron a depender casi exclusivamente de la exportación de petróleo crudo, tras el descubrimiento del yacimiento de Cantarell.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 10"}, {"id": "F14", "section": "F", "num": 14, "q": "¿Qué factores provocaron el colapso financiero de México en 1982?", "a": "La caída internacional del precio del petróleo, el alza drástica de las tasas de interés de la deuda externa en dólares, y una fuga masiva de capitales que obligó a devaluar la moneda y a nacionalizar la banca.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 10"}, {"id": "F15", "section": "F", "num": 15, "q": "¿Cuáles son los pilares principales del Modelo Neoliberal en México?", "a": "La privatización de empresas paraestatales (como Telmex y la banca), la desregulación económica, la apertura comercial (reducción de aranceles) y una estricta disciplina fiscal con recorte al gasto social. Impulsado desde Miguel de la Madrid (entrada al GATT en 1986).", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 11"}, {"id": "F16", "section": "F", "num": 16, "q": "¿Qué es la Globalización y cuál fue su principal hito comercial en México?", "a": "Es el proceso de integración económica, tecnológica y comercial que conecta a los mercados a nivel mundial. Su principal hito en México fue la entrada en vigor del Tratado de Libre Comercio de América del Norte (TLCAN), el 1 de enero de 1994, firmado por Carlos Salinas de Gortari.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 11"}, {"id": "F17", "section": "F", "num": 17, "q": "Menciona un impacto positivo y uno negativo del TLCAN en México.", "a": "Positivo: atracción masiva de inversión extranjera y modernización manufacturera/maquiladora. Negativo: crisis del campo (incapaz de competir con granos extranjeros subsidiados) y profundización de la desigualdad regional norte-sur.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 11"}, {"id": "F18", "section": "F", "num": 18, "q": "¿Qué fue el \"Error de Diciembre\" de 1994 y qué consecuencia tuvo el Fobaproa?", "a": "El Error de Diciembre fue la crisis cambiaria (bajo Ernesto Zedillo) por la pérdida de reservas en dólares, que causó una devaluación extrema y disparó las tasas de interés. El Fobaproa absorbió las carteras vencidas de los bancos, convirtiendo deudas privadas en una millonaria deuda pública que los ciudadanos pagan con impuestos.", "opts": null, "correctIdx": null, "note": null, "tag": "Apuntes de clase — Módulo 11"}];
+
+let state = {
+  filter: 'all',
+  query: '',
+  done: new Set()
+};
+
+function sectionMeta(s){
+  const m = {
+    A: {title:'Conceptos básicos'},
+    B: {title:'Modelos económicos'},
+    C: {title:'Vocabulario y definiciones'},
+    D: {title:'Preguntas de historia'},
+    E: {title:'Ciclo económico'},
+    F: {title:'Extra · Apuntes de clase'}
+  };
+  return m[s];
+}
+
+function render(){
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  const q = state.query.trim().toLowerCase();
+
+  const sections = ['A','B','C','D','E','F'];
+  let anyRendered = false;
+
+  sections.forEach(sec => {
+    let items = DATA.filter(d => d.section === sec);
+
+    if(state.filter === 'done') items = items.filter(d => state.done.has(d.id));
+    if(state.filter === 'pending') items = items.filter(d => !state.done.has(d.id));
+    if(q) items = items.filter(d => (d.q + ' ' + d.a + ' ' + (d.tag||'')).toLowerCase().includes(q));
+
+    if(items.length === 0) return;
+    anyRendered = true;
+
+    const total = DATA.filter(d => d.section === sec).length;
+    const doneCount = DATA.filter(d => d.section === sec && state.done.has(d.id)).length;
+
+    const heading = document.createElement('div');
+    heading.className = 'section-heading';
+    heading.innerHTML = `<span class="letter">${sec}</span><span class="title">${sectionMeta(sec).title}</span><span class="pct">${doneCount}/${total}</span>`;
+    content.appendChild(heading);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'cards';
+
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card' + (state.done.has(item.id) ? ' done' : '');
+      card.dataset.id = item.id;
+
+      let optsHtml = '';
+      if(item.opts){
+        optsHtml = '<div class="opts">' + item.opts.map((o,i) =>
+          `<div class="opt ${i===item.correctIdx ? 'correct':''}">${o}</div>`
+        ).join('') + '</div>';
+      } else {
+        optsHtml = `<div class="a-text">${item.a}</div>`;
+      }
+
+      const noteHtml = item.note ? `<div class="a-note"><b>⚠️ Nota:</b> ${item.note}</div>` : '';
+
+      card.innerHTML = `
+        <div class="q-row" onclick="toggleCard('${item.id}')">
+          <div class="num-badge">${item.num}</div>
+          <div class="q-text">
+            <div class="q-tag">${item.tag || sectionMeta(sec).title}</div>
+            <div class="q-body">${item.q}</div>
+          </div>
+          <div class="chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="a-wrap">
+          <div class="a-inner">
+            <div class="a-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Respuesta</div>
+            ${optsHtml}
+            ${noteHtml}
+            <button class="mark-btn" onclick="event.stopPropagation(); toggleDone('${item.id}')">
+              ${state.done.has(item.id) ? '✓ Repasada' : 'Marcar como repasada'}
+            </button>
+          </div>
+        </div>
+      `;
+      wrap.appendChild(card);
+    });
+
+    content.appendChild(wrap);
+  });
+
+  if(!anyRendered){
+    content.innerHTML = '<div class="empty-state">No se encontraron reactivos con ese criterio.</div>';
+  }
+
+  document.getElementById('progCount').textContent = state.done.size;
+  document.getElementById('progBar').style.width = Math.round((state.done.size/DATA.length)*100) + '%';
+}
+
+function toggleCard(id){
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  if(!card) return;
+  card.classList.toggle('open');
+}
+
+function toggleDone(id){
+  if(state.done.has(id)) state.done.delete(id); else state.done.add(id);
+  render();
+  requestAnimationFrame(()=>{
+    const card = document.querySelector(`.card[data-id="${id}"]`);
+    if(card) card.classList.add('open');
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', (e)=>{
+  state.query = e.target.value;
+  render();
+});
+
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const f = btn.dataset.filter;
+    if(f === 'reset'){
+      if(confirm('¿Reiniciar el progreso de repaso?')){
+        state.done.clear();
+        render();
+      }
+      return;
+    }
+    state.filter = f;
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+});
+
+// section quick-chips
+const chipRow = document.getElementById('chipRow');
+const chipDefs = [
+  {key:'all', label:'Todo'},
+  {key:'A', label:'A · Conceptos'},
+  {key:'B', label:'B · Modelos'},
+  {key:'C', label:'C · Vocabulario'},
+  {key:'D', label:'D · Historia'},
+  {key:'E', label:'E · Ciclo'},
+  {key:'F', label:'F · Extra (apuntes)'}
+];
+let sectionFilter = 'all';
+chipDefs.forEach((c,i)=>{
+  const n = c.key==='all' ? DATA.length : DATA.filter(d=>d.section===c.key).length;
+  const chip = document.createElement('div');
+  chip.className = 'chip' + (i===0 ? ' active':'');
+  chip.innerHTML = `${c.label}<span class="n">${n}</span>`;
+  chip.addEventListener('click', ()=>{
+    document.querySelectorAll('.chip').forEach(ch=>ch.classList.remove('active'));
+    chip.classList.add('active');
+    sectionFilter = c.key;
+    applySectionFilter();
+  });
+  chipRow.appendChild(chip);
+});
+
+function applySectionFilter(){
+  if(sectionFilter === 'all'){ renderAll(); return; }
+  const content = document.getElementById('content');
+  render();
+  document.querySelectorAll('.section-heading, .cards').forEach(el=>{});
+  // simple approach: filter DATA view via query trick
+}
+
+// Simpler: integrate section filter directly into render()
+function renderAll(){ render(); }
+
+const originalRender = render;
+render = function(){
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  const q = state.query.trim().toLowerCase();
+  const sections = sectionFilter === 'all' ? ['A','B','C','D','E','F'] : [sectionFilter];
+  let anyRendered = false;
+
+  sections.forEach(sec => {
+    let items = DATA.filter(d => d.section === sec);
+    if(state.filter === 'done') items = items.filter(d => state.done.has(d.id));
+    if(state.filter === 'pending') items = items.filter(d => !state.done.has(d.id));
+    if(q) items = items.filter(d => (d.q + ' ' + d.a + ' ' + (d.tag||'')).toLowerCase().includes(q));
+    if(items.length === 0) return;
+    anyRendered = true;
+
+    const total = DATA.filter(d => d.section === sec).length;
+    const doneCount = DATA.filter(d => d.section === sec && state.done.has(d.id)).length;
+
+    const heading = document.createElement('div');
+    heading.className = 'section-heading';
+    heading.innerHTML = `<span class="letter">${sec}</span><span class="title">${sectionMeta(sec).title}</span><span class="pct">${doneCount}/${total}</span>`;
+    content.appendChild(heading);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'cards';
+
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card' + (state.done.has(item.id) ? ' done' : '');
+      card.dataset.id = item.id;
+
+      let optsHtml = '';
+      if(item.opts){
+        optsHtml = '<div class="opts">' + item.opts.map((o,i) =>
+          `<div class="opt ${i===item.correctIdx ? 'correct':''}">${o}</div>`
+        ).join('') + '</div>';
+      } else {
+        optsHtml = `<div class="a-text">${item.a}</div>`;
+      }
+      const noteHtml = item.note ? `<div class="a-note"><b>⚠️ Nota:</b> ${item.note}</div>` : '';
+
+      card.innerHTML = `
+        <div class="q-row" onclick="toggleCard('${item.id}')">
+          <div class="num-badge">${item.num}</div>
+          <div class="q-text">
+            <div class="q-tag">${item.tag || sectionMeta(sec).title}</div>
+            <div class="q-body">${item.q}</div>
+          </div>
+          <div class="chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="a-wrap">
+          <div class="a-inner">
+            <div class="a-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Respuesta</div>
+            ${optsHtml}
+            ${noteHtml}
+            <button class="mark-btn" onclick="event.stopPropagation(); toggleDone('${item.id}')">
+              ${state.done.has(item.id) ? '✓ Repasada' : 'Marcar como repasada'}
+            </button>
+          </div>
+        </div>
+      `;
+      wrap.appendChild(card);
+    });
+    content.appendChild(wrap);
+  });
+
+  if(!anyRendered){
+    content.innerHTML = '<div class="empty-state">No se encontraron reactivos con ese criterio.</div>';
+  }
+  document.getElementById('progCount').textContent = state.done.size;
+  document.getElementById('progBar').style.width = Math.round((state.done.size/DATA.length)*100) + '%';
+};
+
+document.getElementById('progTotal').textContent = DATA.length;
 render();
 </script>
 </body>
